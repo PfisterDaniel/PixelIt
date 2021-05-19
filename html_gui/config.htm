@@ -1,0 +1,97 @@
+<script>
+    connectionStart();
+</script>
+<div class="col-md-2">
+    <h2 class="text-center">Matrix</h2>
+    <hr>
+    <div class="form-group">
+        <label for="matrixType">Matrix Type</label>
+        <select type="select" class="form-control" id="matrixType">
+            <option value="1">Vertikal</option>
+            <option value="2">Horizontal</option>
+        </select>
+    </div>
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="bootScreenAktiv">
+        <label class="custom-control-label" for="bootScreenAktiv">Bootsceen aktiv</label>
+    </div>
+</div>
+
+<div class="offset-md-1 col-md-2">
+    <h2 class="text-center">Uhrzeit</h2>
+    <hr>
+    <div class="form-group">
+        <label for="ntpServer">NTP Server</label>
+        <input type="text" class="form-control" id="ntpServer">
+    </div>
+    <div class="form-group">
+        <label for="clockTimeZone">UTC Offset</label>
+        <input type="number" class="form-control" id="clockTimeZone">
+    </div>
+</div>
+
+<div class="offset-md-1 col-md-2">
+    <h2 class="text-center">Standards</h2>
+    <hr>
+    <div class="form-group">
+        <label for="matrixtBrightness">Matrix Helligkeit</label>
+        <input type="number" class="form-control" id="matrixtBrightness">
+    </div>
+    <div class="form-group">
+        <label for="scrollTextDefaultDelay">ScrollText Verzögerung</label>
+        <input type="number" class="form-control" id="scrollTextDefaultDelay">
+    </div>
+</div>
+
+<div class="offset-md-1 col-md-2">
+    <h2 class="text-center">MQTT</h2>
+    <hr>
+    <div class="form-group">
+        <label for="mqttServer">Server</label>
+        <input type="text" class="form-control" id="mqttServer" minlength="7" maxlength="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$">
+    </div>
+    <div class="form-group">
+        <label for="mqttPort">Port</label>
+        <input type="number" class="form-control" id="mqttPort">
+    </div>
+    <div class="form-group">
+        <label for="mqttUser">Benutzer</label>
+        <input type="text" class="form-control" id="mqttUser" placeholder="Optional">
+    </div>
+    <div class="form-group">
+        <label for="mqttPassword">Passwort</label>
+        <input type="password" class="form-control" id="mqttPassword" placeholder="Optional">
+    </div>
+    <div class="form-group">
+        <label for="mqttMasterTopic">MasterTopic</label>
+        <input type="text" class="form-control" id="mqttMasterTopic">
+    </div>
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="mqttAktiv">
+        <label class="custom-control-label" for="mqttAktiv">MQTT aktiv</label>
+    </div>
+</div>
+<div class="col-md-12 text-center">
+    <hr />
+</div>
+<div class="col-md-12 text-center">
+    <button type="button" class="btn btn-outline-success" onclick="SaveConfig()" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#popup"><span data-feather="save"></span> Konfiguration speichern</button>
+</div>
+
+<div class="modal fade" id="popup">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h3 class="modal-title text-success">Konfiguration gespeichert!</h3>
+            </div>
+            <div class="modal-body">
+                <h5>My-Pixel wird neu gestartet, bitte warte Sie <span id="countdowntimer">12</span>&nbsp;Sekunden bevor Sie die Seite aktualisieren!
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    feather.replace()
+</script>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./huebee.min.css" />
+    <link href="./dashboard.css" rel="stylesheet">
+    <script src="./jquery.min.js">
+    </script>
+    <script src="./pixelit.js">
+    </script>
+    <style>
+        textarea {
+            font-size: 12px !important;
+        }
+    </style>
+    <title>My-Pixel</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"><b>My-Pixel</b></a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <div class="text-center nav-link">
+                    Verbindung: <span id="connectionStatus" class="text-danger">Offline</span>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="dash" onclick='ChangePage("dash")' href="#">
+                                <span data-feather="cpu"></span> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick='ChangePage("config")' href="#">
+                                <span data-feather="sliders"></span> Optionen
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick='ChangePage("testarea")' href="#">
+                                <span data-feather="codepen"></span> Test Umgebung
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="update" onclick='ChangePage("update")' href="#">
+                                <span data-feather="upload"></span> Firmware Update
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://pixelit.bastelbunker.de/PixelGallery" target="blank">
+                                <span data-feather="image"></span> Pixel Gallery
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://pixelit.bastelbunker.de/PixelCreator" target="blank">
+                                <span data-feather="edit"></span> Pixel Creator
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="offset-md-2 col-md-10 row" id="mainContent">
+                <div class="row col-md-12" id="mainRefresh">
+
+                </div>
+            </div>
+        </div>
+        <script src="./bootstrap.bundle.min.js">
+        </script>
+        <script src="./feather.min.js"></script>
+        <script>
+            feather.replace()
+        </script>
+
+</body>
+
+</html>
