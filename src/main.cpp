@@ -1900,7 +1900,7 @@ void setup()
 	
 	server.onNotFound(HandleNotFound);
 
-	const char * headerkeys[] = {"User-Agent","Caller"} ;
+	const char * headerkeys[] = {"Caller"} ;
 	size_t headerkeyssize = sizeof(headerkeys)/sizeof(char*);
 	//ask server to track these headers
 	server.collectHeaders(headerkeys, headerkeyssize );
