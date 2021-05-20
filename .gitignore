@@ -5,4 +5,5 @@
 .vscode/ipch
 node_modules/
 package-lock.json
-output/*
+*.bin
+*.gz
