@@ -10,7 +10,7 @@ function RGB565IntArrayPaint() {
     input = input.replace("[", "").replace("]", "");
     var inputArray = input.split(",");
     var counter = 0;
-    $(".pixel").each(function() {
+    $(".p").each(function() {
         var rgb = RGB565IntToRGB(inputArray[counter]);
         $(this).css('background-color', RGBToHEX(rgb[0], rgb[1], rgb[2]));
         counter++;
@@ -102,7 +102,3 @@ function LiveDraw(input) {
     console.log(obj);
     connection.send(obj);
 }
-
-$('input[type=radio]').on('change', function() {
-    $(this).closest("form").submit();
-});

@@ -1,84 +1,102 @@
 <script>
     connectionStart();
 </script>
-<div class="col-md-6">
-    <h2 class="text-center">Systeminformation</h2>
-    <hr>
-    <div class="table-responsive">
-        <table class="table table-striped table-sm" id="table">
-            <tbody>
-                <tr>
-                    <td class="font-weight-bold">Firmware Version:</td>
-                    <td id="firmwareVersion">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">Sketch Größe:</td>
-                    <td id="sketchSize">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">Freier Sketch Speicher:</td>
-                    <td id="freeSketchSpace">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">WiFi RSSI:</td>
-                    <td id="wifiRSSI">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">WiFi Qualität:</td>
-                    <td id="wifiQuality">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">WiFi SSID:</td>
-                    <td id="wifiSSID">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">IP-Addresse:</td>
-                    <td id="ipAddress">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">Freier Heap-Speicher:</td>
-                    <td id="freeHeap">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">ChipID:</td>
-                    <td id="chipID">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">CPU Freq. in MHz:</td>
-                    <td id="cpuFreqMHz">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">Sleep Mode:</td>
-                    <td id="sleepMode">Lade...</td>
-                </tr>
-            </tbody>
-        </table>
+<div class="col-md-6 mb-3">
+    <br/>
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5>Systeminformation</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-sm" id="table">
+                    <tbody>
+                        <tr>
+                            <td class="font-weight-bold">Firmware Version:</td>
+                            <td id="firmwareVersion">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">Sketch Größe:</td>
+                            <td id="sketchSize">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">Freier Sketch Speicher:</td>
+                            <td id="freeSketchSpace">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">WiFi RSSI:</td>
+                            <td id="wifiRSSI">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">WiFi Qualität:</td>
+                            <td id="wifiQuality">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">WiFi SSID:</td>
+                            <td id="wifiSSID">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">IP-Addresse:</td>
+                            <td id="ipAddress">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">Freier Heap-Speicher:</td>
+                            <td id="freeHeap">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">ChipID:</td>
+                            <td id="chipID">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">CPU Freq. in MHz:</td>
+                            <td id="cpuFreqMHz">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">Sleep Mode:</td>
+                            <td id="sleepMode">Lade...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
-<div class="col-md-6">
-    <h2 class="text-center">Sensoren</h2>
-    <hr>
-    <div class="table-responsive">
-        <table class="table table-striped table-sm" id="table">
-            <tbody>
-                <tr>
-                    <td class="font-weight-bold">Lux-Sensor:</td>
-                    <td id="lux">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">Tempratur-Sensor:</td>
-                    <td id="temperature">Lade...</td>
-                </tr>
-                <tr>
-                    <td class="font-weight-bold">Luftfeuchtigkeits-Sensor:</td>
-                    <td id="humidity">Lade...</td>
-                </tr>
-            </tbody>
-        </table>
+<div class="col-md-6 mb-3">
+    <br/>
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5>Sensoren</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-sm" id="table">
+                    <tbody>
+                        <tr>
+                            <td class="font-weight-bold">Lux-Sensor:</td>
+                            <td id="lux">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">Tempratur-Sensor:</td>
+                            <td id="temperature">Lade...</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-bold">Luftfeuchtigkeits-Sensor:</td>
+                            <td id="humidity">Lade...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
-<div class="col-md-12">
-    <h2 class="text-center">Log</h2>
-    <hr>
-    <textarea class="form-control" id="log" rows="17" wrap="off" disabled style="font: 60"></textarea>
+
+<div class="col-md-12 mb-3">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5>Log</h5>
+        </div>
+        <div class="card-body">
+            <textarea class="form-control" id="log" rows="17" wrap="off" disabled style="font: 60"></textarea>
+        </div>
+    </div>
 </div>

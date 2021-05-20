@@ -166,9 +166,25 @@ function ChangePage(_pageName) {
 
     // Dev Option
     if (devMode) {
-        $("#mainContent").load("./" + _pageName + '.htm')
+        $.ajax({
+            type: 'GET',
+            beforeSend: function(request) {
+                request.setRequestHeader("Caller", "MyPixelDashboard");
+            },
+            url: "./" + _pageName + ".htm",
+        }).done(function(data) {
+            $("#mainContent").html(data);
+        });
     } else {
-        $("#mainContent").load("./" + _pageName)
+        $.ajax({
+            type: 'GET',
+            beforeSend: function(request) {
+                request.setRequestHeader("Caller", "MyPixelDashboard");
+            },
+            url: "./" + _pageName
+        }).done(function(data) {
+            $("#mainContent").html(data);
+        });
     }
 
     if (_pageName == 'testarea') {
@@ -196,6 +212,21 @@ function SendTest(type, input) {
     var obj = {};
     var scrollDelay = 200;
     switch (type) {
+        case 'clock':
+            obj["switchAnimation"] = {};
+            obj["switchAnimation"]["aktiv"] = true;
+            obj["switchAnimation"]["animation"] = "coloredBarWipe";
+            obj["clock"] = {};
+            obj["clock"]["show"] = true;
+            obj["clock"]["switchAktiv"] = true;
+            obj["clock"]["switchSec"] = 6;
+            obj["clock"]["withSeconds"] = true;
+            obj["color"] = {};
+            obj["clock"]["r"] = 255;
+            obj["clock"]["g"] = 255;
+            obj["clock"]["b"] = 255;
+            obj = JSON.stringify(obj);
+            break;
         case 'brightness':
             obj["brightness"] = input;
             obj = JSON.stringify(obj);

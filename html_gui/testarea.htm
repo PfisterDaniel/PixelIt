@@ -16,7 +16,7 @@
         display: table-row;
     }
     
-    .pixel {
+    .p {
         display: table-cell;
         background-color: black;
         width: 30px;
@@ -27,6 +27,16 @@
         width: 25px;
         height: 25px;
     }
+    
+    .btn-secondary:not(:disabled):not(.disabled).active {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+    
+    .btn-secondary:not(:disabled):not(.disabled).focus {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
 </style>
 <script>
     connectionStart();
@@ -36,366 +46,78 @@
         SendTest('brightness', val);
     });
 </script>
-<div class="col-md-4">
-    <h2 class="text-center">JSON</h2>
-    <hr>
-    <textarea class="form-control" id="json" rows="17" wrap="off" placeholder='{"text":{"textString":"Test It :D","scrollText":"auto","bigFont":false,"centerText":false,"position":{"x":0,"y":1},"color":{"r":255,"g":255,"b":255}}}}'></textarea>
-    <br />
-    <div class="col-md-12 text-center">
-        <button type="button" class="btn btn-outline-primary" onclick="SendTest('json',$('#json').val())"><span
-                data-feather="send"></span>
-            JSON senden</button>
+<div class="col-md-6 mb-3">
+    <br/>
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5>JSON</h5>
+            <button type="button" class="btn btn-outline-primary" onclick="SendTest('json',$('#json').val())"><span data-feather="send"></span>&nbsp;JSON senden</button>
+        </div>
+        <div class="card-body">
+            <textarea class="form-control" id="json" rows="17" wrap="off" placeholder='{"text":{"textString":"Test It :D","scrollText":"auto","bigFont":false,"centerText":false,"position":{"x":0,"y":1},"color":{"r":255,"g":255,"b":255}}}}'></textarea>
+        </div>
     </div>
 </div>
-<div class="col-md-4">
-    <h2 class="text-center">Text / Brightness</h2>
-    <hr>
-    <label for="brightness">Helligkeit:</label>
-    <input type="range" class="custom-range" min="0" max="255" id="brightness">
-    <div class="text-center" id="brightnessVal">127</div>
-    <br />
-    <div class="form-group">
-        <label for="text">Text:</label>
-        <input type="text" class="form-control" id="text" placeholder="Text eingeben...">
-    </div>
-    <br />
-    <div class="form-group">
-        <label for="text">ScrollTextDelay:</label>
-        <input type="text" class="form-control" id="scrollTextDelayInput" placeholder="" value="100">
-    </div>
-    <br />
-    <div class="col-md-12 text-center">
-        <button type="button" class="btn btn-outline-primary" onclick="SendTest('text',$('#text').val())"><span
-                data-feather="send"></span>
-                Text senden</button>
-    </div>
-</div>
-<div class="col-md-4">
-    <h2 class="text-center">Bitmap</h2>
-    <hr>
-    <textarea class="form-control" id="bitmap" rows="17" wrap="off" placeholder='[ 0,0,0......] or [[ 0,0,0......],[ 0,0,0......],[ 0,0,0......],[ 0,0,0......]]'></textarea>
-    <br />
-    <div class="col-md-12 text-center">
-        <button type="button" class="btn btn-outline-primary" onclick="SendTest('bitmap',$('#bitmap').val())"><span
-                data-feather="send"></span>
-            Grafik senden</button>
-    </div>
-</div>
-<div class="container">
-    <main role="main" class="pb-3">
-        <div class="col-md-12">
+<div class="col-md-6 mb-3">
+    <br/>
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5>Text / Helligkeit</h5>
+            <button type="button" class="btn btn-outline-primary" onclick="SendTest('text',$('#text').val())"><span data-feather="send"></span>&nbsp;Text senden</button>
+        </div>
+        <div class="card-body">
+            <label for="brightness">Helligkeit:</label>
+            <input type="range" class="custom-range" min="0" max="255" id="brightness">
+            <div class="text-center" id="brightnessVal">127</div>
             <br />
-            <div class="card col-md-12 box-shadow">
-                <div class="card-body">
-                    <p></p>
-                    <div>
-                        <div>
-                            <input class="color-input form-control" value="#08F" onfocus="blur();" />
-                        </div>
-                    </div>
-                    <p></p>
-                    <div class="center">
-                        <div id="bmp">
-                            <div class="trow">
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                            </div>
-                            <div class="trow">
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                            </div>
-                            <div class="trow">
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                            </div>
-                            <div class="trow">
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                            </div>
-                            <div class="trow">
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                            </div>
-                            <div class="trow">
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                            </div>
-                            <div class="trow">
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                            </div>
-                            <div class="trow">
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                                <div class="pixel"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p></p>
-                    <textarea class="form-control" rows="4" id="output"></textarea>
-                    <p></p>
-                    <div class="custom-control custom-switch text-center">
-                        <input type="checkbox" class="custom-control-input" id="livedraw">
-                        <label class="custom-control-label" for="livedraw">LiveDraw aktivieren</label>
-                    </div>
-                    <p></p>
-                    <div class="text-center">
-                        <p>
-                            <a href="#/" id="btn-clipboard" class="btn btn-outline-success">
-                    Kopieren
-                </a>
-                        </p>
-                    </div>
-                    <div class="text-center">
-                        <p>
-                            <a href="#/" id="btn-clear" class="btn btn-outline-danger">Alles löschen</a>
-                        </p>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="text">Text:</label>
+                <input type="text" class="form-control" id="text" placeholder="Text eingeben...">
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="text">ScrollTextDelay:</label>
+                <input type="text" class="form-control" id="scrollTextDelayInput" placeholder="" value="100">
             </div>
         </div>
-    </main>
+    </div>
 </div>
+<div class="col-md-12">
+    <br />
+    <div class="card">
+        <div class="card-header d-flex align-items-center">
+            <h4 class="mr-auto pr-3">Pixel Creator (32x8)</h4>
+            <button type="button" class="btn btn-outline-info mr-3" onclick="SendTest('clock','DummyInput')"><span data-feather="clock"></span>&nbsp;Zeige Uhrzeit</button>
+            <div class="btn-group pr-3" role="group" aria-label="" id="drawbox">
+                <button type="button" class="btn btn-outline-secondary" id="btn-show" onclick="SendTest('bitmap',$('#output').val())"><span data-feather="send"></span>&nbsp;Anzeigen</button>
+                <button type="button" class="btn btn-outline-secondary" id="btn-clear"><span data-feather="trash-2"></span>&nbsp;L&ouml;schen</button>
+                <button type="button" class="btn btn-outline-secondary" id="btn-clipboard"><span data-feather="copy"></span>&nbsp;Kopieren</button>
+            </div>
+            <div class="custom-control custom-switch text-center pr-3">
+                <input type="checkbox" class="custom-control-input" id="livedraw">
+                <label class="custom-control-label" for="livedraw">LiveDraw</label>
+            </div>
+        </div>
+        <div class="card-body">
+            <p></p>
+            <div>
+                <div>
+                    <input class="color-input form-control" value="#08F" onfocus="blur();" />
+                </div>
+            </div>
+            <p></p>
+            <div class="center">
+                <div id="bmp"></div>
+            </div>
+
+            <p></p>
+            <textarea class="form-control" rows="4" id="output"></textarea>
+            <p></p>
+
+        </div>
+    </div>
+</div>
+
 <script src="./site.js"></script>
 <script src="./huebee.min.js"></script>
 <script src="./bootbox.all.min.js"></script>
@@ -408,6 +130,17 @@
 
         RGB565IntArrayPaint();
 
+        //Create Grid
+        var trow = "";
+        for (i = 0; i < 8; i++) {
+            trow += '<div class="trow">';
+            for (x = 0; x < 32; x++) {
+                trow += '<div class="p"/>';
+            }
+            trow += "</div>";
+        }
+        $("#bmp").append(trow);
+
         var hueb = new Huebee('.color-input', {
             // options
             notation: 'hex',
@@ -418,10 +151,10 @@
             penColor = color;
         })
 
-        $(".pixel").click(function() {
+        $(".p").click(function() {
             $(this).css('background-color', penColor);
             output = "";
-            $(".pixel").each(function() {
+            $(".p").each(function() {
                 var array = CreateRGBSplit($(this).css('background-color'))
                 var int16 = RGB888ToRGB565(array);
                 output += int16 + ",";
@@ -430,16 +163,22 @@
             CreateOutput(output);
         });
 
-        $(".pixel").bind("contextmenu", function(e) {
+        $(".p").bind("contextmenu", function(e) {
             $(this).css('background-color', "#000000");
             output = "";
-            $(".pixel").each(function() {
+            $(".p").each(function() {
                 var array = CreateRGBSplit($(this).css('background-color'))
                 var int16 = RGB888ToRGB565(array);
                 output += int16 + ",";
             });
             CreateOutput(output);
             e.preventDefault();
+        });
+
+        $('#output').on('paste', function() {
+            setTimeout(function() {
+                RGB565IntArrayPaint();
+            }, 100);
         });
 
         $("#output").keyup(function() {
@@ -451,54 +190,26 @@
             document.execCommand('copy');
         });
 
-        $("#btn-clear").click(function() {
-            $(".pixel").each(function() {
-                $(this).css('background-color', "#000000")
-                $("#output").val('');
-            })
-        });
-
-        $("#btn-show").click(function() {
-            var bmpData = $("#output").val();
-
-            if (bmpData.includes("],[")) {
-                $.ajax({
-                    type: "POST",
-                    contentType: "text/plain; charset=utf-8",
-                    dataType: "json",
-                    url: 'http://' + $(location).attr('hostname') + '/api/screen',
-                    data: '{"bitmapAnimation":{"data":[' + bmpData + '],"animationDelay": 200}}'
-                });
-            } else {
-                $.ajax({
-                    type: "POST",
-                    contentType: "text/plain; charset=utf-8",
-                    dataType: "json",
-                    url: 'http://' + $(location).attr('hostname') + '/api/screen',
-                    data: '{"bitmap":{"data":' + bmpData + ',"position":{"x":0,"y":0},"size":{"width":8,"height":8}}}'
-                });
-            }
-        });
-
         $("#livedraw").change(function() {
-            if ($(this).prop('checked')) {
-                connection = new WebSocket('ws://' + $(location).attr('hostname') + ':81/setScreen');
-
-                connection.onopen = function() {}
-
-                connection.onerror = function(error) {
-                    // Debug
-                    console.log('WebSocket Error ' + error);
-                    if (connection.readyState !== WebSocket.CLOSED) {
-                        connection.close();
-                    }
-                }
+            if ($(this).is(":checked")) {
+                $("#btn-show").prop("disabled", true);
             } else {
-                if (connection != null && connection.readyState != WebSocket.CLOSED) {
-                    connection.close();
-                }
+                $("#btn-show").prop("disabled", false);
             }
+        });
 
+        $("#btn-clear").click(function() {
+            $(".p").each(function() {
+                $(this).css('background-color', "#000000")
+            })
+            output = "";
+            $(".p").each(function() {
+                var array = CreateRGBSplit($(this).css('background-color'))
+                var int16 = RGB888ToRGB565(array);
+                output += int16 + ",";
+            });
+            CreateOutput(output);
+            $("#output").val('');
         });
 
     });

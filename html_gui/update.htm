@@ -1,10 +1,9 @@
 <div class="col-md-12">
-    <h2 class="text-center">Firmware Update</h2>
-    <hr>
+    <br/>
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            Firmware Update
-            <input type="button" class="btn btn-outline-success" id="btnUpdFw" onclick="uploadFirmware()" value='Update Firmware'>
+            <h3>Firmware Update</h3>
+            <button class="btn btn-outline-success" id="btnUpdFw" onclick="uploadFirmware()"><span data-feather="share"></span> Upload starten</button>
         </div>
         <div class="card-body">
             <div class="alert popup alert-success" role="alert" id="UPS">
@@ -23,7 +22,7 @@
 
                 <input type="text" id="fwtxt" class="form-control" name="firmware" readonly>
                 <div class="input-group-append">
-                    <button class="input-group-text" id="fwopenbtn" type="button">Öffnen</button>
+                    <button class="input-group-text" id="fwopenbtn" type="button"><span data-feather="folder"></span>&nbsp;Öffnen</button>
                 </div>
 
             </div>
@@ -58,6 +57,7 @@
         $("#upload_progressbar").hide();
         $("#btnUpdFw").hide();
         $("#fwva").val(fwVersion);
+        feather.replace();
     });
 
     $("#fwopenbtn").on("click", function(event) {

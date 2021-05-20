@@ -601,6 +601,8 @@ void DrawClock(bool fromJSON)
 	char time[14];
 	int xPosTime = 2;
 	int xPosDate = 2;
+
+	//Prüfen ob das Datum mit Jahr angezeigt werden soll
 	if(dateWithYear){
 		xPosDate = 2;
 		sprintf_P(date, PSTR("%02d.%02d.%02d"), day(), month(), year()-2000);
@@ -609,7 +611,7 @@ void DrawClock(bool fromJSON)
 		sprintf_P(date, PSTR("%02d.%02d."), day(), month());
 	}
 
-
+	//Prüfen ob die Uhrzeit mit Sekunden angezeigt werden soll
 	if (clockWithSeconds)
 	{
 		xPosTime = 2;
@@ -662,7 +664,7 @@ void DrawClock(bool fromJSON)
 				matrix->drawLine(0, 7, 33, 7, 0);
 				DrawWeekDay();
 				matrix->show();
-				delay(35);
+				delay(50);
 			}
 		}
 		else
@@ -688,7 +690,7 @@ void DrawClock(bool fromJSON)
 				matrix->drawLine(0, 7, 33, 7, 0);
 				DrawWeekDay();
 				matrix->show();
-				delay(35);
+				delay(50);
 			}
 		}
 		else
@@ -804,25 +806,66 @@ void HandleGetMainPage()
 
 void HandleGetDashPage()
 {
-	server.sendHeader("Connection", "close");
-	server.send(200, "text/html", PAGE_DASH);
+	if(server.hasHeader("Caller")){
+		if(server.header("Caller") == "MyPixelDashboard"){
+			server.sendHeader("Connection", "close");
+			server.send(200, "text/html", PAGE_DASH);
+		}else{
+			server.sendHeader("Location", "/",true);
+    		server.send(302, "text/plane",""); 
+		}
+	}else{
+		server.sendHeader("Location", "/",true);
+		server.send(302, "text/plane",""); 
+	}
 }
 
 void HandleGetConfigPage()
 {
-	server.sendHeader("Connection", "close");
-	server.send(200, "text/html", PAGE_CONFIG);
+	if(server.hasHeader("Caller")){
+		if(server.header("Caller") == "MyPixelDashboard"){
+			server.sendHeader("Connection", "close");
+			server.send(200, "text/html", PAGE_CONFIG);
+		}else{
+			server.sendHeader("Location", "/",true);
+    		server.send(302, "text/plane",""); 
+		}
+	}else{
+		server.sendHeader("Location", "/",true);
+		server.send(302, "text/plane",""); 
+	}
 }
 
 void HandleGetTestAreaPage()
 {
-	server.sendHeader("Connection", "close");
-	server.send(200, "text/html", PAGE_TEST);
+	if(server.hasHeader("Caller")){
+		if(server.header("Caller") == "MyPixelDashboard"){
+			server.sendHeader("Connection", "close");
+			server.send(200, "text/html", PAGE_TEST);
+		}else{
+			server.sendHeader("Location", "/",true);
+    		server.send(302, "text/plane",""); 
+		}
+	}else{
+		server.sendHeader("Location", "/",true);
+		server.send(302, "text/plane",""); 
+	}
 }
 
-void HandleGetUpdatePage(){
-	server.sendHeader("Connection", "close");
-	server.send(200, "text/html", PAGE_UPDATE);
+void HandleGetUpdatePage()
+{
+	if(server.hasHeader("Caller")){
+		if(server.header("Caller") == "MyPixelDashboard"){
+			server.sendHeader("Connection", "close");
+			server.send(200, "text/html", PAGE_UPDATE);
+		}else{
+			server.sendHeader("Location", "/",true);
+    		server.send(302, "text/plane",""); 
+		}
+	}else{
+		server.sendHeader("Location", "/",true);
+		server.send(302, "text/plane",""); 
+	}
 }
 
 void ColoredBarWipe()
@@ -1691,6 +1734,10 @@ void Handle_factoryreset()
 	}
 	configFile.println("");
 	configFile.close();
+
+	server.sendHeader("Connection", "close");
+	server.send(200, "application/json", "{\"response\":\"OK\"}");
+	delay(1000);
 	WifiSetup();
 	ESP.restart();
 }
@@ -1749,12 +1796,12 @@ void setup()
 	// Set config save notify callback
 	wifiManager.setSaveConfigCallback(SaveConfigCallback);
 	wifiManager.setMinimumSignalQuality();
-	wifiManager.setHostname("Pixel-Display");
+	wifiManager.setHostname("MyPixel");
 	// Config menue timeout 180 seconds. 
 	wifiManager.setConfigPortalTimeout(180);
 	// Disable Debug-Output
 	wifiManager.setDebugOutput(false);
-	if (!wifiManager.autoConnect("Pixel-Display"))
+	if (!wifiManager.autoConnect("MyPixel"))
 	{
 		Log(F("Setup"), F("Wifi failed to connect and hit timeout"));
 		delay(3000);
@@ -1780,6 +1827,7 @@ void setup()
 	server.on(F("/api/luxsensor"), HTTP_GET, HandleGetLuxSensor);
 	server.on(F("/api/dhtsensor"), HTTP_GET, HandleGetDHTSensor);
 	server.on(F("/api/matrixinfo"), HTTP_GET, HandleGetMatrixInfo);
+	server.on(F("/api/factory_reset"), HTTP_POST, Handle_factoryreset);
 	server.on(F("/api/config"), HTTP_POST, HandleSetConfig);
 	server.on(F("/api/config"), HTTP_GET, HandleGetConfig);
 	server.on(F("/"), HTTP_GET, HandleGetMainPage);
@@ -1852,7 +1900,10 @@ void setup()
 	
 	server.onNotFound(HandleNotFound);
 
-
+	const char * headerkeys[] = {"User-Agent","Caller"} ;
+	size_t headerkeyssize = sizeof(headerkeys)/sizeof(char*);
+	//ask server to track these headers
+	server.collectHeaders(headerkeys, headerkeyssize );
 	server.begin();
 
 	webSocket.begin();
@@ -1877,7 +1928,6 @@ void setup()
 
 void loop()
 {
-
 	server.handleClient();
 	webSocket.loop();
 
